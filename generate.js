@@ -53,7 +53,6 @@ function generate_projectile(x, y, angle, amount, offsetAngle, offsetStartTimes,
 	    // Add it to the array
 	    projectile.push(newProjectile);
 	}
-	console.log(projectile);
 }
 
 

@@ -38,23 +38,25 @@ var client = {
 // Create the player
 var player = {
 	
-	id: "a",
+	id: "playeriditis",
 	
 	x: 0,
 	y: 0,
 	
 	width: 40,
 	height: 40,
-	color: "red",
+	
+	health: 100,
+	color: "blue",
 	
 	velocity: {
 		
 		x: 0,
 		y: 0,
-		max: 6,
+		max: 4,
 		min: 0.5,
-		inc: 0.4,
-	    friction: 0.1
+		inc: 0.5,
+	    friction: 0.08
 	    
 	},
 	
@@ -62,12 +64,14 @@ var player = {
 		
 		amount: 3, // 1, 3, 5 ... odd numbers
 		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
-		offsetAngle: 8, // Deg
-		speed: 18,
+		offsetAngle: 6, // Deg
+		speed: 6,
 		delay: 0.15, // Seconds
-		duration: 0.4, // Seconds
-		color: "blue",
+		duration: 0.3, // Seconds
+		color: "purple",
+		damage: 5,
 		last: 0 // Last time a projectile was shot
+		
 		
 	}
 	
@@ -77,42 +81,44 @@ var player = {
 // Create the enemy
 var enemy = {
 	
-	id: "b",
+	id: "en",
 	
-	x: 100,
-	y: 100,
+	x: 500,
+	y: 300,
 	
 	width: 40,
 	height: 40,
-	color: "black",
+	health: 1000,
+	color: "orange",
 	
 	velocity: {
 		
 		x: 0,
 		y: 0,
-		max: 5,
-		min: 1,
-		inc: 0.5,
+		max: 4,
+		min: 0.5,
+		inc: 0.2,
 	    friction: 0.2
 		
 	},
 	
 	projectile: {
 		
-		amount: 3, // 1, 3, 5 ... odd numbers
+		amount: 1, // 1, 3, 5 ... odd numbers
 		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
-		offsetAngle: 8, // Deg
-		speed: 18,
-		delay: 0.4, // Seconds
-		duration: 0.4, // Seconds
+		offsetAngle: 0, // Deg
+		speed: 4,
+		delay: 0.8, // Seconds
+		duration: 0.5, // Seconds
 		color: "red",
+		damage: 20,
 		last: 0 // Last time a projectile was shot
 		
 	},
 	
 	instruction : {
 		
-		attackDist: 700
+		attackDist: 500
 		
 	}
 	

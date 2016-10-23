@@ -1,13 +1,59 @@
 
 function phys_player(){
 	
+	// If player dies
+	if(player.health < 1){
+		player_dead();
+	}
+	
+	// If an axis is coliding
+	var xHit, yHit;
+	
+	/* BULLET COLLISION */
+	for(var i = 0; i < projectile.length; i++){
+
+		// Check if it's their own projectile
+		if(projectile[i].id === player.id){
+			continue; // The the next projectile
+		}
+		
+		// Sum boools
+		xHit = false;
+		yHit = false;
+		
+		// Collision check
+		if(player.x <= projectile[i].x){
+			if(player.x + player.width >= projectile[i].x){
+				xHit = true;
+			}
+		}
+		if(player.y <= projectile[i].y){
+			if(player.y + player.height >= projectile[i].y){
+				yHit = true;
+			}
+		}
+		
+		// Check if both axis hit
+		if(xHit && yHit){
+			// Remove the bullet
+			projectile.splice(i, 1);
+			i--; // Go back an index since this index got spliced
+			
+			// Deal dmg
+			player.health -= enemy.projectile.damage; // CHANGE TO THIS SPECIFIC BULLETS DAMAGE LATER!
+			
+		}
+	}
+	
+	
+	/* MOVEMENT */
 	var incX = true, incY = true;
 	
 	// Calc the player velocity based on input
 	if(client.key.left && player.velocity.x > -player.velocity.max)       player.velocity.x -= player.velocity.inc;
-	else if(client.key.right && player.velocity.x < player.velocity.max)  player.velocity.x += player.velocity.inc;
+	if(client.key.right && player.velocity.x < player.velocity.max)  player.velocity.x += player.velocity.inc;
 	if(client.key.up && player.velocity.y > -player.velocity.max)         player.velocity.y -= player.velocity.inc;
-	else if(client.key.down && player.velocity.y < player.velocity.max)   player.velocity.y += player.velocity.inc;
+	if(client.key.down && player.velocity.y < player.velocity.max)   player.velocity.y += player.velocity.inc;
 	
 	// Calculate player velocity based on friction
 	if(player.velocity.x >= 0)  player.velocity.x -= player.velocity.friction;
@@ -28,6 +74,7 @@ function phys_player(){
 	/*-- - Set the offset for the screen! - --*/
 	client.offset.x = player.x - (client.width / 2) + (player.width / 2);
 	client.offset.y = player.y - (client.height / 2) + (player.height / 2);
+	
 
 }
 
@@ -112,4 +159,4 @@ function phys(){
 }
 
 // 120 tick physics
-setInterval(phys, 1000 / 120);
+setInterval(phys, 1000 / 240); // 240

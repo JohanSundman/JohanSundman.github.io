@@ -24,7 +24,7 @@ function render(){
 		
 		ctx.beginPath();
 		ctx.fillStyle = projectile[i].color;
-	    ctx.arc(projectile[i].x - client.offset.x, projectile[i].y - client.offset.y, 8, 0, 2 * Math.PI);
+	    ctx.arc(projectile[i].x - client.offset.x, projectile[i].y - client.offset.y, 6, 0, 2 * Math.PI);
 	    ctx.fill();
 		
 	}
