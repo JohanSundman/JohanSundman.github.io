@@ -58,8 +58,8 @@ var player = {
 		
 		last: 0, // Last time a projectile was shot
 		speed: 20,
-		delay: 0.0005, // Seconds
-		duration: 0.8, // Seconds
+		delay: 0.15, // Seconds
+		duration: 0.6, // Seconds
 		color: "red"
 		
 	}
