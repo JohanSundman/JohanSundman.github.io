@@ -12,7 +12,7 @@ function resize(){
 
 function crop(w, h, el){
 	// Width, Height, Element
-	var offset = 17;
+	var offset = 0;
 	el.width = w - offset;
 	el.height = h - offset;
 }

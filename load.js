@@ -56,11 +56,14 @@ var player = {
 	
 	projectile: {
 		
-		last: 0, // Last time a projectile was shot
-		speed: 20,
+		amount: 3, // 1, 3, 5 ... odd numbers
+		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
+		offsetAngle: 8, // Deg
+		speed: 18,
 		delay: 0.15, // Seconds
-		duration: 0.6, // Seconds
-		color: "red"
+		duration: 0.4, // Seconds
+		color: "blue",
+		last: 0 // Last time a projectile was shot
 		
 	}
 	
