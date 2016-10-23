@@ -99,11 +99,20 @@ var enemy = {
 	
 	projectile: {
 		
-		last: 0, // Last time a projectile was shot
-		speed: 5,
-		delay: 3, // Seconds
-		duration: 3, // Seconds
-		color: "red"
+		amount: 3, // 1, 3, 5 ... odd numbers
+		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
+		offsetAngle: 8, // Deg
+		speed: 18,
+		delay: 0.4, // Seconds
+		duration: 0.4, // Seconds
+		color: "red",
+		last: 0 // Last time a projectile was shot
+		
+	},
+	
+	instruction : {
+		
+		attackDist: 700
 		
 	}
 	

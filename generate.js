@@ -53,6 +53,7 @@ function generate_projectile(x, y, angle, amount, offsetAngle, offsetStartTimes,
 	    // Add it to the array
 	    projectile.push(newProjectile);
 	}
+	console.log(projectile);
 }
 
 
@@ -77,14 +78,37 @@ function create_player_projectile(){
 		player.projectile.last = t;
 		
 		
-		// Distance y, distance x
+		// Get the angle(rad) the mouse is i
 		var angle = rad_angle(player.x + (player.width / 2) - client.offset.x, player.y + (player.height / 2) - client.offset.y,  x, y);
 
 		// Create a projectile
 		generate_projectile(player.x + player.width / 2, player.y + player.height / 2, angle, player.projectile.amount, deg2rad(player.projectile.offsetAngle), player.projectile.offsetStartTimes, player.projectile.speed, player.id, t, t + player.projectile.duration * 1000, player.projectile.color);
 
-	}
-	
-	
-	
+	}	
 }
+
+
+
+function create_enemy_projectile(){
+	// Create a projectile
+	
+	// Get the time
+	var d = new Date();
+    var t = d.getTime(); // Time
+	
+	// Call projectile generator IF the delay time has passed since last time
+	if(t - (enemy.projectile.delay * 1000) > enemy.projectile.last){ // Current T(ms) - delay(ms) > last time shoot
+		
+		// Update the time last shoot
+		enemy.projectile.last = t;
+		
+		
+		// Get the angle(rad) the player is in
+		var angle = rad_angle(enemy.x, enemy.y, player.x, player.y);
+        
+		// Create a projectile
+		generate_projectile(enemy.x + (enemy.width / 2), enemy.y + (enemy.height / 2), angle, enemy.projectile.amount, deg2rad(enemy.projectile.offsetAngle), enemy.projectile.offsetStartTimes, enemy.projectile.speed, enemy.id, t, t + enemy.projectile.duration * 1000, enemy.projectile.color);
+
+	}
+}
+

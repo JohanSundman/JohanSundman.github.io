@@ -32,6 +32,23 @@ function phys_player(){
 }
 
 
+function phys_enemy(){
+	
+	// calculate the distance between the player and itself
+	var d = dist(enemy.x, enemy.y, player.x, player.y);
+	
+	// Try to shoot a shoot towards the player
+	if(d <= enemy.instruction.attackDist){
+		create_enemy_projectile();
+	}
+	
+	
+	// Add the new distance
+	
+	
+}
+
+
 function phys_projectile(){
 	
 	// Get the time
@@ -83,6 +100,9 @@ function phys(){
 	
 	// The players physics
     phys_player();
+	
+	// Physics for the emeys (bot)
+	phys_enemy();
 	
 	// Physics for the projectiles
 	phys_projectile();
