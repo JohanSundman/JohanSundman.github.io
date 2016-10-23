@@ -7,6 +7,11 @@ function resize(){
 	var el = document.getElementById("game");
 	// Call the cropping
 	crop(w, h, el);
+	
+	// Update the client with the size
+	if(typeof client == "undefined"){ return;}
+	client.width = w;
+	client.height = h;
 }
 
 

@@ -1,11 +1,11 @@
 /* Init all the vars and call some functions */
 
 
-// Give the canvas a size
-resize();
-
 // Create the client information
 var client = {
+	
+	width: 0,
+	height: 0,
 	
 	key: {
 		left: false,
@@ -25,10 +25,14 @@ var client = {
 		down: false,
 		x: 0,
 		y: 0
+	},
+	
+	offset: {
+		x: 0,
+		y: 0
 	}
 	
 };
-
 
 
 // Create the player
@@ -47,9 +51,9 @@ var player = {
 		
 		x: 0,
 		y: 0,
-		max: 7,
+		max: 6,
 		min: 0.5,
-		inc: 0.3,
+		inc: 0.4,
 	    friction: 0.1
 	    
 	},
@@ -106,6 +110,11 @@ var enemy = {
 };
 
 
+
+
+
+
+
 // All the projectiles
 var projectile = [];
 
@@ -116,6 +125,10 @@ var projectile = [];
 var canvas = document.getElementById("game"); // The element
 var ctx = canvas.getContext("2d"); // The default context
 
+
+
+// Give the canvas a size
+resize();
 
 
 

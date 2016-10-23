@@ -78,8 +78,8 @@ function create_player_projectile(){
 		
 		
 		// Distance y, distance x
-		var angle = rad_angle(player.x + player.width / 2, player.y + player.height / 2,  x, y)
-	    
+		var angle = rad_angle(player.x + (player.width / 2) - client.offset.x, player.y + (player.height / 2) - client.offset.y,  x, y);
+
 		// Create a projectile
 		generate_projectile(player.x + player.width / 2, player.y + player.height / 2, angle, player.projectile.amount, deg2rad(player.projectile.offsetAngle), player.projectile.offsetStartTimes, player.projectile.speed, player.id, t, t + player.projectile.duration * 1000, player.projectile.color);
 

@@ -21,8 +21,13 @@ function phys_player(){
 	
 	
 	// Apply the player velocity to the player position
-	if(incX)player.x += player.velocity.x;
-	if(incY)player.y += player.velocity.y;
+	if(incX) player.x += player.velocity.x;
+	if(incY) player.y += player.velocity.y;
+	
+	
+	/*-- - Set the offset for the screen! - --*/
+	client.offset.x = player.x - (client.width / 2) + (player.width / 2);
+	client.offset.y = player.y - (client.height / 2) + (player.height / 2);
 
 }
 
