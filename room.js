@@ -10,4 +10,5 @@ function player_dead(){
 	
 	// Get rid of the enemies
 	enemy = []; // empty array
+	
 }
