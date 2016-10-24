@@ -8,7 +8,7 @@ function player_dead(){
 	player.velocity.current = 0;
 	player.health = 100;
 	
-	// Get rid of the enemies
-	enemy = []; // empty array
-	
+	// Get rid of the enemies and projectiles
+	enemy = []; // Empty array
+	projectile = []; // Empty array
 }
