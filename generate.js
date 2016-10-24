@@ -1,5 +1,5 @@
 
-function generate_projectile(x, y, angle, amount, offsetAngle, offsetStartTimes, speed, ownerId, creationTime, endTime, color){
+function generate_projectile(x, y, angle, amount, offsetAngle, offsetStartTimes, speed, damage, ownerId, creationTime, endTime, color){
 
     var projectilePos = offsetStartTimes; // Higher than 0
 	// Create multiple shoots
@@ -44,7 +44,8 @@ function generate_projectile(x, y, angle, amount, offsetAngle, offsetStartTimes,
 	    	yInc: yInc,
 	    	speed: speed,
 	    	angle: angle,
-	    	
+	    	damage: damage,
+			
 	    	color: color
 	    	
 	    }
@@ -81,14 +82,14 @@ function create_player_projectile(){
 		var angle = rad_angle(player.x + (player.width / 2) - client.offset.x, player.y + (player.height / 2) - client.offset.y,  x, y);
 
 		// Create a projectile
-		generate_projectile(player.x + player.width / 2, player.y + player.height / 2, angle, player.projectile.amount, deg2rad(player.projectile.offsetAngle), player.projectile.offsetStartTimes, player.projectile.speed, player.id, t, t + player.projectile.duration * 1000, player.projectile.color);
+		generate_projectile(player.x + player.width / 2, player.y + player.height / 2, angle, player.projectile.amount, deg2rad(player.projectile.offsetAngle), player.projectile.offsetStartTimes, player.projectile.speed, player.projectile.damage, player.id, t, t + player.projectile.duration * 1000, player.projectile.color);
 
 	}	
 }
 
 
 
-function create_enemy_projectile(){
+function create_enemy_projectile(instance){
 	// Create a projectile
 	
 	// Get the time
@@ -96,17 +97,17 @@ function create_enemy_projectile(){
     var t = d.getTime(); // Time
 	
 	// Call projectile generator IF the delay time has passed since last time
-	if(t - (enemy.projectile.delay * 1000) > enemy.projectile.last){ // Current T(ms) - delay(ms) > last time shoot
+	if(t - (enemy[instance].projectile.delay * 1000) > enemy[instance].projectile.last){ // Current T(ms) - delay(ms) > last time shoot
 		
 		// Update the time last shoot
-		enemy.projectile.last = t;
+		enemy[instance].projectile.last = t;
 		
 		
 		// Get the angle(rad) the player is in
-		var angle = rad_angle(enemy.x, enemy.y, player.x, player.y);
+		var angle = rad_angle(enemy[instance].x, enemy[instance].y, player.x, player.y);
         
 		// Create a projectile
-		generate_projectile(enemy.x + (enemy.width / 2), enemy.y + (enemy.height / 2), angle, enemy.projectile.amount, deg2rad(enemy.projectile.offsetAngle), enemy.projectile.offsetStartTimes, enemy.projectile.speed, enemy.id, t, t + enemy.projectile.duration * 1000, enemy.projectile.color);
+		generate_projectile(enemy[instance].x + (enemy[instance].width / 2), enemy[instance].y + (enemy[instance].height / 2), angle, enemy[instance].projectile.amount, deg2rad(enemy[instance].projectile.offsetAngle), enemy[instance].projectile.offsetStartTimes, enemy[instance].projectile.speed, enemy[instance].projectile.damage, enemy[instance].id, t, t + enemy[instance].projectile.duration * 1000, enemy[instance].projectile.color);
 
 	}
 }

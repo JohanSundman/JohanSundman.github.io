@@ -35,12 +35,13 @@ function phys_player(){
 		
 		// Check if both axis hit
 		if(xHit && yHit){
+			
+			// Deal dmg
+			player.health -= projectile[i].damage;
+			
 			// Remove the bullet
 			projectile.splice(i, 1);
 			i--; // Go back an index since this index got spliced
-			
-			// Deal dmg
-			player.health -= enemy.projectile.damage; // CHANGE TO THIS SPECIFIC BULLETS DAMAGE LATER!
 			
 		}
 	}
@@ -81,17 +82,73 @@ function phys_player(){
 
 function phys_enemy(){
 	
-	// calculate the distance between the player and itself
-	var d = dist(enemy.x, enemy.y, player.x, player.y);
-	
-	// Try to shoot a shoot towards the player
-	if(d <= enemy.instruction.attackDist){
-		create_enemy_projectile();
+	// every enemy
+	for(var i = 0; i < enemy.length; i++){
+		
+	    // If enemy dies
+	    if(enemy[i].health < 1){
+	    	enemy.splice(i, 1);
+	    	i--; // Go back and check this index again since a new object will be here
+			
+			if(enemy.length === 0) break; // There is no enemy, stop the loop
+	    }
+	    
+	    
+	    // If an axis is coliding
+	    var xHit, yHit;
+	    
+	    /* BULLET COLLISION */
+	    for(var b = 0; b < projectile.length; b++){
+        
+	    	// Check if it's their own projectile
+	    	if(projectile[b].id === enemy[i].id){
+	    		continue; // The the next projectile
+	    	}
+	    	
+	    	// Sum boools
+	    	xHit = false;
+	    	yHit = false;
+	    	
+	    	// Collision check
+	    	if(enemy[i].x <= projectile[b].x){
+	    		if(enemy[i].x + enemy[i].width >= projectile[b].x){
+	    			xHit = true;
+	    		}
+	    	}
+	    	if(enemy[i].y <= projectile[b].y){
+	    		if(enemy[i].y + enemy[i].height >= projectile[b].y){
+	    			yHit = true;
+	    		}
+	    	}
+	    	
+	    	// Check if both axis hit
+	    	if(xHit && yHit){
+	    		
+	    		// Deal dmg
+	    		enemy[i].health -= projectile[b].damage;
+	    		
+	    		// Remove the bullet
+	    		projectile.splice(b, 1);
+	    		b--; // Go back an index since this index got spliced
+	    		
+	    	}
+	    }
+		
+		
+		/* Shoot the projectile */
+	    
+		// calculate the distance between the player and itself
+	    var d = dist(enemy[i].x, enemy[i].y, player.x, player.y);
+	    
+	    // Try to shoot a shoot towards the player
+	    if(d <= enemy[i].instruction.attackDist){
+	    	create_enemy_projectile(i);
+	    }
+	    
+		
+	    /* Movement! */
+		
 	}
-	
-	
-	// Add the new distance
-	
 	
 }
 
@@ -121,7 +178,7 @@ function phys_projectile(){
 	// Loop through the removeIndex and remove all the unwanted projectiles
 	for(var i = 0; i < removeIndex.length; i++){
 		
-		// Remove the 
+		// Remove the projectile
 		projectile.splice(removeIndex[i] - i, 1);
 		
 	}

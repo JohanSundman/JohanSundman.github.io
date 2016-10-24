@@ -12,11 +12,13 @@ function render(){
 	ctx.fill();
 	
 	
-	// Draw the enemy
-	ctx.beginPath();
-	ctx.fillStyle = enemy.color;
-	ctx.fillRect(enemy.x - client.offset.x, enemy.y - client.offset.y, enemy.width, enemy.height);
-	ctx.fill();
+	// Draw all the enemies
+	for(var i = 0; i < enemy.length; i++){
+	    ctx.beginPath();
+	    ctx.fillStyle = enemy[i].color;
+	    ctx.fillRect(enemy[i].x - client.offset.x, enemy[i].y - client.offset.y, enemy[i].width, enemy[i].height);
+	    ctx.fill();
+	}
 	
 	
 	// Draw all the projectiles

@@ -69,7 +69,7 @@ var player = {
 		delay: 0.15, // Seconds
 		duration: 0.3, // Seconds
 		color: "purple",
-		damage: 5,
+		damage: 10,
 		last: 0 // Last time a projectile was shot
 		
 		
@@ -78,17 +78,14 @@ var player = {
 };
 
 
-// Create the enemy
-var enemy = {
+// The blueprint to use when creating enemies
+var enemy_1 = {
 	
-	id: "en",
-	
-	x: 500,
-	y: 300,
+	id: "enemy",
 	
 	width: 40,
 	height: 40,
-	health: 1000,
+	health: 100,
 	color: "orange",
 	
 	velocity: {
@@ -126,8 +123,8 @@ var enemy = {
 
 
 
-
-
+// All the enemys
+var enemy = [];
 
 
 // All the projectiles
