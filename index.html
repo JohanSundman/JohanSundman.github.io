@@ -22,4 +22,12 @@
 	<script src="event.js"></script>
 	<script src="phys.js"></script>
 	<script src="render.js"></script>
+	
+	<script>
+	     /*-- Temporary spawning solution --*/
+	     function spawn(){
+		 spawn_enemy( Math.random() * 300 - 150 , Math.random() * 300 - 150 , enemy_1);
+	     }
+	     setInterval(spawn, 1000 * 3); // Will spawn every 3 seconds
+	</script>
 </body>
