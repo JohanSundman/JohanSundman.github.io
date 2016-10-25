@@ -87,6 +87,10 @@ function phys_enemy(){
 		
 	    // If enemy dies
 	    if(enemy[i].health.state < 1){
+			
+			// Got a kill
+			client.stat.currentKills++;
+			
 	    	enemy.splice(i, 1);
 	    	i--; // Go back and check this index again since a new object will be here
 			
@@ -216,4 +220,5 @@ function phys(){
 }
 
 // 120 tick physics
-setInterval(phys, 1000 / 240); // 240
+//setInterval(phys, 1000 / 60); // 240
+// Physics triggered by the rendering!!!

@@ -1,20 +1,23 @@
 function render(){
 	
+	// Do the physics before rendering
+	phys();
+	
+	
 	// Clear the canvas
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
-	// Draw the player
-	ctx.beginPath();
-	    // Player
-	    ctx.fillStyle = player.color;
-	    ctx.fillRect(player.x - client.offset.x , player.y - client.offset.y, player.width, player.height);
-	ctx.fill();
-	ctx.beginPath();
-	    // HP
-	    ctx.fillStyle = player.health.color;
-	    ctx.fillRect(player.x - client.offset.x, player.y - client.offset.y + player.height + player.height / 10, player.width * (player.health.state / player.health.max), player.height / 10);
-	ctx.fill();
+	
+	
+	// Draw all the projectiles
+	for(var i = 0; i < projectile.length; i++){
+		
+		ctx.beginPath();
+		ctx.fillStyle = projectile[i].color;
+	    ctx.arc(projectile[i].x - client.offset.x, projectile[i].y - client.offset.y, 6, 0, 2 * Math.PI);
+	    ctx.fill();
+		
+	}
+	
 	
 	
 	// Draw all the enemies
@@ -32,15 +35,24 @@ function render(){
 	}
 	
 	
-	// Draw all the projectiles
-	for(var i = 0; i < projectile.length; i++){
-		
-		ctx.beginPath();
-		ctx.fillStyle = projectile[i].color;
-	    ctx.arc(projectile[i].x - client.offset.x, projectile[i].y - client.offset.y, 6, 0, 2 * Math.PI);
-	    ctx.fill();
-		
-	}
+	// Draw the player
+	ctx.beginPath();
+	    // Player
+	    ctx.fillStyle = player.color;
+	    ctx.fillRect(player.x - client.offset.x , player.y - client.offset.y, player.width, player.height);
+	ctx.fill();
+	ctx.beginPath();
+	    // HP
+	    ctx.fillStyle = player.health.color;
+	    ctx.fillRect(player.x - client.offset.x, player.y - client.offset.y + player.height + player.height / 10, player.width * (player.health.state / player.health.max), player.height / 10);
+	ctx.fill();
+	
+	
+	
+	
+	// The kills
+	ctx.font = "26px Arial";
+    ctx.strokeText("Kills: " + client.stat.currentKills, 4, client.height - 8);
 	
 }
 

@@ -7,6 +7,23 @@ var client = {
 	width: 0,
 	height: 0,
 	
+	zoom: {
+		
+		current: 1,
+		max: 0.4,
+		min: 2
+		
+	},
+	
+	stat: {
+		
+		currentKills: 0,
+		
+		sessionKills: 0,
+		sessionMax: 0,
+		
+	},
+	
 	key: {
 		left: false,
 		right: false,
@@ -61,21 +78,21 @@ var player = {
 		
 		x: 0,
 		y: 0,
-		max: 4,
-		min: 0.5,
-		inc: 0.5,
-	    friction: 0.08
+		max: 12,
+		min: 2.1,
+		inc: 4.2,
+	    friction: 2.0
 	    
 	},
 	
 	projectile: {
 		
-		amount: 3, // 1, 3, 5 ... odd numbers
+		amount: 5, // 1, 3, 5 ... odd numbers
 		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
-		offsetAngle: 6, // Deg
-		speed: 6,
+		offsetAngle: 4, // Deg
+		speed: 16,
 		delay: 0.15, // Seconds
-		duration: 0.3, // Seconds
+		duration: 0.42, // Seconds
 		color: "purple",
 		damage: 20,
 		last: 0 // Last time a projectile was shot
@@ -117,12 +134,12 @@ var enemy_1 = {
 	
 	projectile: {
 		
-		amount: 1, // 1, 3, 5 ... odd numbers
+		amount: 2, // 1, 3, 5 ... odd numbers
 		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
-		offsetAngle: 0, // Deg
-		speed: 4,
-		delay: 0.8, // Seconds
-		duration: 0.5, // Seconds
+		offsetAngle: 180, // Deg
+		speed: 8,
+		delay: 0.4, // Seconds
+		duration: 1, // Seconds
 		color: "red",
 		damage: 10,
 		last: 0 // Last time a projectile was shot
@@ -166,12 +183,12 @@ var enemy_2 = {
 	
 	projectile: {
 		
-		amount: 20, // 1, 3, 5 ... odd numbers
+		amount: 10, // 1, 3, 5 ... odd numbers
 		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
 		offsetAngle: 18, // Deg
-		speed: 1.2,
-		delay: 1.0, // Seconds
-		duration: 0.40, // Seconds
+		speed: 6,
+		delay: 0.4, // Seconds
+		duration: 0.5, // Seconds
 		color: "red",
 		damage: 5,
 		last: 0 // Last time a projectile was shot
@@ -180,7 +197,57 @@ var enemy_2 = {
 	
 	instruction : {
 		
-		attackDist: 200
+		attackDist: 300
+		
+	}
+	
+};
+
+var enemy_3 = {
+	
+	id: "enemy3",
+	
+	width: 20,
+	height: 20,
+	color: "grey",
+	
+	health: {
+		
+		state: 40,
+		max: 40,
+		
+		color: "red"
+		
+	},
+	
+	velocity: {
+		
+		x: 0,
+		y: 0,
+		max: 4,
+		min: 0.5,
+		inc: 0.2,
+	    friction: 0.2
+		
+	},
+	
+	projectile: {
+		
+		amount: 1, // 1, 3, 5 ... odd numbers
+		offsetStartTimes: 1, // x >= 1 // NOT 0 = STACKED SHOOTS
+		offsetAngle: 0, // Deg
+		speed: 2,
+		delay: 0.4, // Seconds
+		duration: 5, // Seconds
+		color: "black",
+		damage: 3,
+		last: 0 // Last time a projectile was shot
+		
+	},
+	
+	instruction : {
+		
+		attackDist: 700
 		
 	}
 	
