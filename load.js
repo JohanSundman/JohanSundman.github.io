@@ -45,9 +45,17 @@ var player = {
 	
 	width: 40,
 	height: 40,
-	
-	health: 100,
 	color: "blue",
+	
+	
+	health: {
+		
+		state: 100,
+		max: 100,
+		
+		color: "green"
+		
+	},
 	
 	velocity: {
 		
@@ -85,8 +93,16 @@ var enemy_1 = {
 	
 	width: 40,
 	height: 40,
-	health: 100,
 	color: "orange",
+	
+	health: {
+		
+		state: 100,
+		max: 100,
+		
+		color: "red"
+		
+	},
 	
 	velocity: {
 		
