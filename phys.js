@@ -2,7 +2,7 @@
 function phys_player(){
 	
 	// If player dies
-	if(player.health.state < 1){
+	if(player.health < 1){
 		player_dead();
 	}
 	
@@ -37,7 +37,7 @@ function phys_player(){
 		if(xHit && yHit){
 			
 			// Deal dmg
-			player.health.state -= projectile[i].damage;
+			player.health -= projectile[i].damage;
 			
 			// Remove the bullet
 			projectile.splice(i, 1);
@@ -86,7 +86,7 @@ function phys_enemy(){
 	for(var i = 0; i < enemy.length; i++){
 		
 	    // If enemy dies
-	    if(enemy[i].health.state < 1){
+	    if(enemy[i].health < 1){
 	    	enemy.splice(i, 1);
 	    	i--; // Go back and check this index again since a new object will be here
 			
@@ -125,11 +125,11 @@ function phys_enemy(){
 	    	if(xHit && yHit){
 	    		
 	    		// Deal dmg
-	    		enemy[i].health.state -= projectile[b].damage;
+	    		enemy[i].health -= projectile[b].damage;
 	    		
 	    		// Remove the bullet
 	    		projectile.splice(b, 1);
-	    		i--; // Go back an index since this index got spliced
+	    		b--; // Go back an index since this index got spliced
 	    		
 	    	}
 	    }
