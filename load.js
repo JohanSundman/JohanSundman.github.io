@@ -273,6 +273,8 @@ var projectile = [];
 // Create the canvas context
 var canvas = document.getElementById("game"); // The element
 var ctx = canvas.getContext("2d"); // The default context
+var textCanvas = document.getElementById("textCanvas");
+var textLayer = textCanvas.getContext("2d"); // The text context
 
 
 

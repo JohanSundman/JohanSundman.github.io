@@ -6,14 +6,14 @@ document.addEventListener("keydown", keyDown);
 document.addEventListener("keyup", keyUp);
 
 // Click event
-document.getElementById("game").addEventListener("click", click);
-document.getElementById("game").addEventListener("mousedown", function(e){
+document.addEventListener("click", click);
+document.addEventListener("mousedown", function(e){
 	client.mouse.down = true;
 });
-document.getElementById("game").addEventListener("mouseup", function(e){
+document.addEventListener("mouseup", function(e){
     client.mouse.down = false;
 });
-document.getElementById("game").addEventListener('mousemove', function(e) {
+document.addEventListener('mousemove', function(e) {
     client.mouse.x = e.clientX;
 	client.mouse.y = e.clientY;
 }, false);

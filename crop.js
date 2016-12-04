@@ -4,9 +4,9 @@ function resize(){
 
 	var w = window.innerWidth;
 	var h = window.innerHeight;
-	var el = document.getElementById("game");
 	// Call the cropping
-	crop(w, h, el);
+	crop(w, h, canvas); // Crop the game canvas
+	crop(w, h, textCanvas); // Crop the text canvas
 	
 	// Update the client with the size
 	if(typeof client == "undefined"){ return;}

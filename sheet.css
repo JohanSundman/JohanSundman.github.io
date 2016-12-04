@@ -3,8 +3,21 @@ html, body{
 	padding: 0px;
 	overflow: hidden;
 }
+#textCanvas{
+	z-index: 20;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+    margin: 0px;
+	padding: 0px;
+	border: 0px;
+	overflow: hidden;
+}
 #game{
-	position: relative;
+	z-index: 10;
+	position: absolute;
+	top: 0px;
+	left: 0px;
     margin: 0px;
 	padding: 0px;
 	border: 0px;
