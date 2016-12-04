@@ -51,8 +51,8 @@ var client = {
 	
 	background: {
 		color: "#ffffff",
-		line_amount: 7,
-		line_color: "#dddddd"
+		line_amount: 6,
+		line_color: "#cccccc"
 	}
 	
 };
@@ -118,6 +118,7 @@ var enemy_1 = {
 	height: 40,
 	color: "orange",
 	
+	
 	health: {
 		
 		state: 100,
@@ -133,8 +134,8 @@ var enemy_1 = {
 		y: 0,
 		max: 4,
 		min: 0.5,
-		inc: 0.2,
-	    friction: 0.2
+		inc: 0.15,
+	    friction: 0.04
 		
 	},
 	
@@ -180,8 +181,8 @@ var enemy_2 = {
 		y: 0,
 		max: 4,
 		min: 0.5,
-		inc: 0.2,
-	    friction: 0.2
+		inc: 0.1,
+	    friction: 0.03
 		
 	},
 	
@@ -230,8 +231,8 @@ var enemy_3 = {
 		y: 0,
 		max: 4,
 		min: 0.5,
-		inc: 0.2,
-	    friction: 0.2
+		inc: 0.05,
+	    friction: 0.02
 		
 	},
 	

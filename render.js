@@ -31,7 +31,8 @@ function render(){
 	temp.y.firstLine = factorise(client.offset.y, temp.margin); // Cord of first line in this frame
 	
 	// The vertical ones
-	for(var i = 0; i < client.background.line_amount; i++){
+	//for(var i = 0; i < client.background.line_amount; i++){
+	for(var i = 0; temp.margin * i < client.width; i++){
 		var thisX = temp.x.firstLine + (i * temp.margin) - client.offset.x;
 		
 		// Horizontal line (draw up to down)
@@ -40,7 +41,8 @@ function render(){
 		
 	}
 	// The horizontal ones
-	for(var i = 0; i < client.background.line_amount; i++){
+	//for(var i = 0; i < client.background.line_amount; i++){
+	for(var i = 0; temp.margin * i < client.height; i++){
 		var thisY = temp.y.firstLine + (i * temp.margin) - client.offset.y;
 		
 		// Horizontal line (draw up to down)

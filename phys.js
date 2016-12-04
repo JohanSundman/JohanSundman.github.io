@@ -146,11 +146,66 @@ function phys_enemy(){
 	    	create_enemy_projectile(i);
 	    }
 	    
+		
+		
 		/* Movement */
-		
-		
-	}
+		const MIN_DIST = 2;
+		var dx = enemy[i].x - player.x;
+		var dy = enemy[i].y - player.y;
+		var distance = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+
+		if(distance > MIN_DIST){
+			// Accelerate the enemy towards player
+			if(Math.abs(enemy[i].velocity.x) < enemy[i].velocity.max){
+				// Accelerate
+				if(dx < 0){
+					enemy[i].velocity.x += enemy[i].velocity.inc;
+				}
+				else{
+					enemy[i].velocity.x -= enemy[i].velocity.inc;
+				}
+			}
+			if(Math.abs(enemy[i].velocity.y) < enemy[i].velocity.max){
+				// Accelerate
+				if(dy < 0){
+					enemy[i].velocity.y += enemy[i].velocity.inc;
+				}
+				else{
+					enemy[i].velocity.y -= enemy[i].velocity.inc;
+				}
+			}
+		}
+		else{
+			// Accelerate the enemy slowly away from the player
+			
+			
+			
+		}
 	
+		
+		
+	    // Apply the friction
+	    if(enemy[i].velocity.x >= 0)  enemy[i].velocity.x -= enemy[i].velocity.friction;
+	    else                          enemy[i].velocity.x += enemy[i].velocity.friction;
+	    if(enemy[i].velocity.y >= 0)  enemy[i].velocity.y -= enemy[i].velocity.friction;
+	    else                          enemy[i].velocity.y += enemy[i].velocity.friction;
+	    
+	    // Make the enemy stand still if velocity too low
+		var incX = true, incY = true;
+	    if(Math.abs(enemy[i].velocity.x) < enemy[i].velocity.min) incX = false;
+	    if(Math.abs(enemy[i].velocity.y) < enemy[i].velocity.min) incY = false;
+	    
+	    // Apply the enemy velocity to the enemy position
+	    if(incX) enemy[i].x += enemy[i].velocity.x;
+	    if(incY) enemy[i].y += enemy[i].velocity.y;
+		
+		
+		
+		// Apply the acceleration to the movement
+		enemy[i].x += enemy[i].velocity.x;
+		enemy[i].y += enemy[i].velocity.y;
+	    
+	}	
 }
 
 
