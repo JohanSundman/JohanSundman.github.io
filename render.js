@@ -3,9 +3,56 @@ function render(){
 	// Do the physics before rendering
 	phys();
 	
-	
 	// Clear the canvas
 	ctx.clearRect(0, 0, canvas.width, canvas.height);
+	
+	
+	
+	
+	
+
+	// Draw the background
+	ctx.beginPath();
+	ctx.strokeStyle = client.background.line_color;
+	
+	// Temp object for storing the usefull variables
+	var temp = {
+		margin: null,
+		x: {
+			firstLine: null
+		},
+		y: {
+			firstLine: null
+		}
+	}
+	// Essential variables
+	temp.margin = Math.round(client.width / client.background.line_amount); // The pixel amount between each line
+	temp.x.firstLine = factorise(client.offset.x, temp.margin); // Cord of first line in this frame
+	temp.y.firstLine = factorise(client.offset.y, temp.margin); // Cord of first line in this frame
+	
+	// The vertical ones
+	for(var i = 0; i < client.background.line_amount; i++){
+		var thisX = temp.x.firstLine + (i * temp.margin) - client.offset.x;
+		
+		// Horizontal line (draw up to down)
+		ctx.moveTo(thisX, 0);
+	    ctx.lineTo(thisX, client.height);
+		
+	}
+	// The horizontal ones
+	for(var i = 0; i < client.background.line_amount; i++){
+		var thisY = temp.y.firstLine + (i * temp.margin) - client.offset.y;
+		
+		// Horizontal line (draw up to down)
+		ctx.moveTo(0, thisY);
+	    ctx.lineTo(client.width, thisY);
+		
+	}
+	ctx.stroke(); // Draw the lines
+	
+	
+	
+	
 	
 	
 	// Draw all the projectiles

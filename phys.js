@@ -92,9 +92,7 @@ function phys_enemy(){
 			client.stat.currentKills++;
 			
 	    	enemy.splice(i, 1);
-	    	i--; // Go back and check this index again since a new object will be here
-			
-			if(enemy.length === 0) break; // There is no enemy, stop the loop
+			continue;
 	    }
 	    
 	    
@@ -133,8 +131,7 @@ function phys_enemy(){
 	    		
 	    		// Remove the bullet
 	    		projectile.splice(b, 1);
-	    		i--; // Go back an index since this index got spliced
-	    		
+				continue;
 	    	}
 	    }
 		
@@ -149,8 +146,8 @@ function phys_enemy(){
 	    	create_enemy_projectile(i);
 	    }
 	    
+		/* Movement */
 		
-	    /* Movement! */
 		
 	}
 	

@@ -47,6 +47,12 @@ var client = {
 	offset: {
 		x: 0,
 		y: 0
+	},
+	
+	background: {
+		color: "#ffffff",
+		line_amount: 7,
+		line_color: "#dddddd"
 	}
 	
 };
@@ -147,9 +153,7 @@ var enemy_1 = {
 	},
 	
 	instruction : {
-		
 		attackDist: 500
-		
 	}
 	
 };
