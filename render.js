@@ -104,6 +104,3 @@ function render(){
     ctx.strokeText("Kills: " + client.stat.currentKills, 4, client.height - 8);
 	
 }
-
-
-setInterval(render, 1000 / 60);

@@ -58,6 +58,16 @@ var client = {
 };
 
 
+// The level etc..
+var game = {
+	
+	level: 0,	
+	enemySpawnDelay: 1,
+	enemyMaxAmount: 2
+	
+};
+
+
 // Create the player
 var player = {
 	

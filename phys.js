@@ -253,9 +253,6 @@ function phys_projectile(){
 }
 
 
-
-
-
 function phys(){
 	
 	// The players physics
@@ -270,7 +267,3 @@ function phys(){
 	// Check if it should create projectile
 	if(client.mouse.down){ create_player_projectile() }
 }
-
-// 120 tick physics
-//setInterval(phys, 1000 / 60); // 240
-// Physics triggered by the rendering!!!

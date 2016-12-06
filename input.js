@@ -49,12 +49,3 @@ function click(e){
 	
 }
 
-
-
-
-
-
-
-
-
-
