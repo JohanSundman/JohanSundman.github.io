@@ -30,15 +30,39 @@ function journey(){
 	game.level++; // Increment the level
 	
 	drawText("Level " + game.level, "red", (delay / 3) * 2); // Draw the text (delayed disappearing text)
-	setTimeout(spawn, delay * 1000, "First parameter", "second parameter", "this just goes on and on"); // Spawn the enemies (delayed)
 	
+	setTimeout(level_spawn, delay * 1000, // Spawn the enemies (delayed)
+				game.level, // Which level to spawn
+				game.bossFactor, // Boss rarity 
+				"this just goes on and on"
+				);
 }
 
 /*-- Temporary spawning solution --*/
-function spawn(){
+function level_spawn(level, bossFactorial){
 	game.safety = false; // Is not in safety mode anymore
 	
-	spawn_enemy( player.x + (Math.random() * 2000 - 1000) , player.y + (Math.random() * 1000 - 500) , enemy_1);
-	spawn_enemy( player.x + (Math.random() * 2000 - 1000) , player.y + (Math.random() * 1000 - 500) , enemy_2);
-	spawn_enemy( player.x + (Math.random() * 2000 - 1000) , player.y + (Math.random() * 1000 - 500) , enemy_3);
+	// Check for boss battle
+	if(level == factorise(level, bossFactorial)){ // If this level is a boss level
+		var bossLvl = level / bossFactorial; // Calculate the boss level
+		level_boss(bossLvl); // Spawn the boss
+		
+		return true;
+	}
+	
+	/* MATH algorithm to spawn enemies */
+	var amount = 2*Math.sqrt(Math.pow(level, 0.8)); // Calculate the amount of enemies with | 2\sqrt{x^{0.8}} | view it on https://www.desmos.com/calculator
+	var amount = Math.abs(Math.round(amount)); // Make it a whole number and possetive
+
+	// Spawn the enemies now
+	for(var i = 0; i < amount; i++){
+		spawn_enemy( player.x + (Math.random() * 2000 - 1000) , player.y + (Math.random() * 1000 - 500) , enemy_1); // Enemy_1, enemy_2, enemy_3
+	}
+}
+
+function level_boss(bossNum){
+	
+	drawText("                         boss nr." + bossNum, "red");
+	console.log("This is a boss level! Every " + game.bossFactor + " is a boss level and this is the boss number " + bossNum + "!"); // -----------
+	
 }

@@ -64,7 +64,8 @@ var game = {
 	level: 0,
 	safety: false,
 	enemySpawnDelay: 1,
-	enemyMaxAmount: 2
+	enemyMaxAmount: 2,
+	bossFactor: 5
 	
 };
 
