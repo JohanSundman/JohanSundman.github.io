@@ -61,7 +61,8 @@ var client = {
 // The level etc..
 var game = {
 	
-	level: 0,	
+	level: 0,
+	safety: false,
 	enemySpawnDelay: 1,
 	enemyMaxAmount: 2
 	

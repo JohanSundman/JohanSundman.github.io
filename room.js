@@ -2,6 +2,10 @@
 
 function player_dead(){
 	
+	// Reset the level
+	game.level = 0;
+	game.safety = false;
+	
 	// When the player dies
 	player.x = 0;
 	player.y = 0;
